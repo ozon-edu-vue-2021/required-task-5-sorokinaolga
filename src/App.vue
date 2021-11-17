@@ -2,8 +2,13 @@
   <div id="app">
     <header class="header">
       <nav class="nav">
-        <router-link to="/">Главная</router-link>
-        <router-link to="/cart">Корзина</router-link>
+        <router-link 
+          v-for="link in viewsList" 
+          :key="link.name" 
+          :to="link.path"
+        >
+          {{ link.title }}
+        </router-link>
       </nav>
     </header>
     <transition name="fade" mode="out-in">
@@ -15,6 +20,14 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      viewsList: [
+        { name: 'main', path: '/', title: 'Главная' },
+        { name: 'cart', path: '/cart', title: 'Корзина' }
+      ]
+    }
+  },
   mounted() {
     this.$store.dispatch('getProducts');
   }

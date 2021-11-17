@@ -25,12 +25,14 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$store.dispatch('addProductToCart', {
+      const product = {
         id: this.product.uid,
         title: this.product.dish,
         price: this.price,
         count: 1,
-      });
+      };
+
+      this.$store.dispatch('addProductToCart', product);
     }
   },
 };
