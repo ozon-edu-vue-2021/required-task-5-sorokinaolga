@@ -3,7 +3,7 @@ export const SET_PRODUCTS = (state, products) => {
 }
 
 export const ADD_PRODUCT_TO_CART = (state, { id, title, price, count }) => {
-  let productInCart = state.order.find(product => {
+  const productInCart = state.order.find(product => {
     return product.id === id;
   })
   if(productInCart) {
